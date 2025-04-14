@@ -1,5 +1,6 @@
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { axiosAPI, endpoints } from '../utils/axios-api';
+import { isEmpty } from 'lodash';
 
 export const useApplicants = ({ page, limit, search, appliedRoleId, statusId }: {
   page?: number;
@@ -21,9 +22,9 @@ export const useApplicants = ({ page, limit, search, appliedRoleId, statusId }: 
         params: {
           page: page ?? 1,
           limit,
-          search,
-          appliedRoleId,
-          statusId
+          search: !isEmpty(search) ? search : undefined,
+          appliedRoleId: !isEmpty(appliedRoleId) ? appliedRoleId : undefined,
+          statusId: !isEmpty(statusId) ? statusId : undefined
         }
       });
       return response.data;
@@ -35,7 +36,13 @@ export const useApplicants = ({ page, limit, search, appliedRoleId, statusId }: 
 };
 
 export const useApplicant = (id: string) => {
-  const query = useQuery({
+  const query = useQuery<{
+    message: string;
+    meta?: {
+      totalAllData: number
+    },
+    data: Applicant
+  }>({
     queryKey: ['applicant', id],
     queryFn: async () => {
       const response = await axiosAPI.get(endpoints.applicants.detail(id));

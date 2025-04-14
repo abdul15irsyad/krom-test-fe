@@ -26,7 +26,7 @@ export const CustomTableRow = <T extends { id: string; _index?: number }>({
       >
         <TableCell style={{ color: 'gray' }}>{row._index}</TableCell>
 
-        {dataTableRow && dataTableRow(row)}
+        {dataTableRow?.(row)}
       </TableRow>
     </>
   );

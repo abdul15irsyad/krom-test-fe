@@ -36,7 +36,7 @@ export const CustomTableFiltersResult = <F extends { search: string }>({
         onClick={onResetFilters}
         startIcon={<Icon icon="solar:trash-bin-trash-bold" />}
       >
-        clear
+        clear filters
       </Button>
     </Stack>
   );

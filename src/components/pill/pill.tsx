@@ -1,18 +1,22 @@
+import { SxProps, Theme, Typography } from '@mui/material';
+
 export const Pill = ({
   text,
   color = 'primary',
+  sx,
 }: {
   text: string;
   color?: string;
+  sx?: SxProps<Theme>;
 }) => {
   return (
-    <div
-      style={{
+    <Typography
+      sx={{
         display: 'inline-block',
         padding: '.25rem .5rem',
         fontWeight: 600,
-        borderRadius: 5,
-        fontSize: '90%',
+        borderRadius: 2,
+        fontSize: '11px',
         ...(color === 'primary'
           ? {
               backgroundColor: '#e3f2fd',
@@ -29,9 +33,10 @@ export const Pill = ({
               color: '#5f2120',
             }
           : {}),
+        ...sx,
       }}
     >
       {text}
-    </div>
+    </Typography>
   );
 };

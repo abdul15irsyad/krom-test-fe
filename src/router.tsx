@@ -1,5 +1,8 @@
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
 import { ListApplicantPage } from './pages/applicants/list';
+import { NotFoundPage } from './pages/notfound';
+import { DetailApplicationPage } from './pages/applicants/detail';
+import { AddApplicantPage } from './pages/applicants/add';
 
 const routes: RouteObject[] = [
   {
@@ -7,8 +10,9 @@ const routes: RouteObject[] = [
     // element: <App />,
     children: [
       { index: true, element: <ListApplicantPage /> },
-      // { path: 'about', element: <AboutPage /> },
-      // { path: '*', element: <NotFoundPage /> },
+      { path: '/add', element: <AddApplicantPage /> },
+      { index: false, path: '/detail/:id', element: <DetailApplicationPage /> },
+      { path: '*', element: <NotFoundPage /> },
     ],
   },
 ];

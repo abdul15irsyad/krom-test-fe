@@ -1,4 +1,4 @@
-import { TableCell } from '@mui/material';
+import { SxProps, TableCell, Theme } from '@mui/material';
 import { Applicant } from '../../hooks/use-applicant';
 import { Pill } from '../../components/pill/pill';
 
@@ -13,24 +13,33 @@ export const ListApplicantTableRow = ({
     <TableCell sx={{ whiteSpace: 'nowrap' }}>{email}</TableCell>
     <TableCell sx={{ whiteSpace: 'nowrap' }}>{appliedRole.name}</TableCell>
     <TableCell sx={{ whiteSpace: 'nowrap' }}>
-      <Pill
-        text={applicationStatus.name}
-        color={
-          [
-            'Hired',
-            'Offer Accepted',
-            'Interview Done',
-            'Offer Made',
-            'Contacted',
-          ].includes(applicationStatus.name)
-            ? 'success'
-            : ['Candidate Rejected', 'Offer Rejected'].includes(
-                applicationStatus.name,
-              )
-            ? 'error'
-            : undefined
-        }
-      />
+      <PillStatus name={applicationStatus.name} />
     </TableCell>
   </>
+);
+
+export const PillStatus = ({
+  name,
+  sx,
+}: {
+  name: string;
+  sx?: SxProps<Theme>;
+}) => (
+  <Pill
+    sx={sx}
+    text={name}
+    color={
+      [
+        'Hired',
+        'Offer Accepted',
+        'Interview Done',
+        'Offer Made',
+        'Contacted',
+      ].includes(name)
+        ? 'success'
+        : ['Candidate Rejected', 'Offer Rejected'].includes(name)
+        ? 'error'
+        : undefined
+    }
+  />
 );

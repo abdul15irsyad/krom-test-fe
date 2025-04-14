@@ -15,7 +15,6 @@ import { useDebounce } from '../../hooks/use-debounce';
 import { Icon } from '@iconify/react';
 import { ListApplicantToolbar } from './list-toolbar';
 import { ListApplicantTableRow } from './list-row';
-import { useEffect } from 'react';
 
 const tableHead: HeadLabel[] = [
   { id: 'name', label: 'Name' },
@@ -42,9 +41,6 @@ export const ListApplicantPage = () => {
   } = useTable<typeof defaultFilters>({
     defaultFilters,
   });
-  useEffect(() => {
-    console.log({ filters });
-  }, [filters]);
 
   const searchDebounce = useDebounce(filters?.search);
 
@@ -76,10 +72,9 @@ export const ListApplicantPage = () => {
           Add Applicant
         </Button>
       </Stack>
-      <Card>
+      <Card sx={{ padding: 2 }}>
         <Stack
           spacing={2}
-          padding={2}
           paddingBottom={1}
           alignItems={{ xs: 'flex-start' }}
           justifyContent="space-between"
