@@ -23,16 +23,16 @@ export const Pill = ({
               color: '#1565c0',
             }
           : color === 'success'
-          ? {
-              backgroundColor: '#e8f5e9',
-              color: '#2e7d32',
-            }
-          : color === 'error'
-          ? {
-              backgroundColor: '#fdeded',
-              color: '#5f2120',
-            }
-          : {}),
+            ? {
+                backgroundColor: '#e8f5e9',
+                color: '#2e7d32',
+              }
+            : color === 'error'
+              ? {
+                  backgroundColor: '#fdeded',
+                  color: '#5f2120',
+                }
+              : {}),
         ...sx,
       }}
     >

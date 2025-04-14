@@ -4,7 +4,7 @@ import { axiosAPI, endpoints } from '../utils/axios-api';
 export const useListRoles = () => {
   const query = useQuery<{
     message: string;
-    data: Role[]
+    data: Role[];
   }>({
     queryKey: ['roles'],
     queryFn: async () => {
@@ -12,7 +12,7 @@ export const useListRoles = () => {
       return response.data;
     },
     staleTime: 0,
-    retry: false
+    retry: false,
   });
   return query;
 };

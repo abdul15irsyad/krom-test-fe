@@ -38,8 +38,8 @@ export const PillStatus = ({
       ].includes(name)
         ? 'success'
         : ['Candidate Rejected', 'Offer Rejected'].includes(name)
-        ? 'error'
-        : undefined
+          ? 'error'
+          : undefined
     }
   />
 );

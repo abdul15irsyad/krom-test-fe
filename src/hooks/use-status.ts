@@ -4,7 +4,7 @@ import { axiosAPI, endpoints } from '../utils/axios-api';
 export const useListStatuses = () => {
   const query = useQuery<{
     message: string;
-    data: Status[]
+    data: Status[];
   }>({
     queryKey: ['statuses'],
     queryFn: async () => {
@@ -12,7 +12,7 @@ export const useListStatuses = () => {
       return response.data;
     },
     staleTime: 0,
-    retry: false
+    retry: false,
   });
   return query;
 };

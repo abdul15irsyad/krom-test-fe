@@ -3,7 +3,13 @@ import { axiosAPI, endpoints } from '../utils/axios-api';
 import { isEmpty } from 'lodash';
 import { AxiosError } from 'axios';
 
-export const useApplicants = ({ page, limit, search, appliedRoleId, statusId }: {
+export const useApplicants = ({
+  page,
+  limit,
+  search,
+  appliedRoleId,
+  statusId,
+}: {
   page?: number;
   limit?: number;
   search?: string;
@@ -13,9 +19,9 @@ export const useApplicants = ({ page, limit, search, appliedRoleId, statusId }: 
   const query = useQuery<{
     message: string;
     meta?: {
-      totalAllData: number
-    },
-    data: Applicant[]
+      totalAllData: number;
+    };
+    data: Applicant[];
   }>({
     queryKey: ['applicants', page, limit, search, appliedRoleId, statusId],
     queryFn: async () => {
@@ -25,13 +31,13 @@ export const useApplicants = ({ page, limit, search, appliedRoleId, statusId }: 
           limit,
           search: !isEmpty(search) ? search : undefined,
           appliedRoleId: !isEmpty(appliedRoleId) ? appliedRoleId : undefined,
-          statusId: !isEmpty(statusId) ? statusId : undefined
-        }
+          statusId: !isEmpty(statusId) ? statusId : undefined,
+        },
       });
       return response.data;
     },
     staleTime: 0,
-    retry: false
+    retry: false,
   });
   return query;
 };
@@ -40,9 +46,9 @@ export const useApplicant = (id: string) => {
   const query = useQuery<{
     message: string;
     meta?: {
-      totalAllData: number
-    },
-    data: Applicant
+      totalAllData: number;
+    };
+    data: Applicant;
   }>({
     queryKey: ['applicant', id],
     queryFn: async () => {
@@ -50,67 +56,71 @@ export const useApplicant = (id: string) => {
       return response.data;
     },
     staleTime: 0,
-    retry: false
+    retry: false,
   });
   return query;
 };
 
 export const useCreateApplicant = () => {
-  const mutation = useMutation<{
-    message: string;
-    data: Applicant
-  }, AxiosError<{
-    message: string;
-    error?: string;
-    errors?: {
-      type: string,
-      msg: string,
-      path: string,
-      location: string,
-    }[];
-  }>,{
-    name: string;
-    email: string;
-    phoneNumber: string;
-    appliedRoleId: string;
-    yearsOfExperience: number;
-    location: string;
-    resumeURL: string;
-  }>({
+  const mutation = useMutation<
+    {
+      message: string;
+      data: Applicant;
+    },
+    AxiosError<{
+      message: string;
+      error?: string;
+      errors?: {
+        type: string;
+        msg: string;
+        path: string;
+        location: string;
+      }[];
+    }>,
+    {
+      name: string;
+      email: string;
+      phoneNumber: string;
+      appliedRoleId: string;
+      yearsOfExperience: number;
+      location: string;
+      resumeURL: string;
+    }
+  >({
     mutationKey: ['createApplicant'],
     mutationFn: async (data) => {
       const response = await axiosAPI.post(endpoints.applicants.root, data);
       return response.data;
     },
-    retry: false
+    retry: false,
   });
   return mutation;
 };
 
 export interface Applicant {
-  id: string,
-  name: string,
-  email: string,
-  phoneNumber: string,
-  location: string,
-  appliedRoleId: string,
-  yearsOfExperience: number,
-  applicationStatusId: string,
-  resumeURL: string,
-  updatedAt: string,
-  createdAt: string,
+  id: string;
+  name: string;
+  email: string;
+  phoneNumber: string;
+  location: string;
+  appliedRoleId: string;
+  yearsOfExperience: number;
+  applicationStatusId: string;
+  resumeURL: string;
+  updatedAt: string;
+  createdAt: string;
   appliedRole: {
-    id: string,
-    name: string,
-    slug: string,
-    updatedAt: string,
-    createdAt: string
-  },
+    id: string;
+    name: string;
+    slug: string;
+    updatedAt: string;
+    createdAt: string;
+  };
   applicationStatus: {
-    id: string,
-    name: string,
-    slug: string,
-    updatedAt: string,
-    createdAt: string
-  }
+    id: string;
+    name: string;
+    slug: string;
+    updatedAt: string;
+    createdAt: string;
+  };
 }
