@@ -8,11 +8,11 @@ export const LoadingIllustration = () => (
     sx={{
       alignItems: 'center',
       justifyContent: 'center',
-      gap: '.25rem',
+      gap: '1.5rem',
       margin: '1rem auto',
     }}
   >
-    <Box sx={{ width: '160px' }}>
+    <Box sx={{ width: '100px' }}>
       <img
         alt="loading illustration"
         src={`/illustrations/illustrations_loading.png`}
@@ -26,7 +26,7 @@ export const LoadingIllustration = () => (
         }}
       />
     </Box>
-    <Typography variant="h4" component="h2">
+    <Typography variant="h5" component="h2">
       Loading...
     </Typography>
   </Stack>

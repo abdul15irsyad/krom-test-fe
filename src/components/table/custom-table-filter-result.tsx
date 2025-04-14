@@ -14,7 +14,6 @@ export const CustomTableFiltersResult = <F extends { search: string }>({
 }) => {
   return (
     <Stack
-      paddingX={2}
       paddingBottom={1}
       flexGrow={1}
       spacing={1}

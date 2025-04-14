@@ -7,7 +7,7 @@ export interface HeadLabel {
 
 export const CustomTableHead = ({ headLabel }: { headLabel: HeadLabel[] }) => {
   return (
-    <TableHead>
+    <TableHead sx={{ backgroundColor: '#dfdfdf' }}>
       <TableRow>
         <TableCell sx={{ width: '1px', fontWeight: 800 }}>No</TableCell>
 

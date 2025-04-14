@@ -281,7 +281,7 @@ export const AddApplicantPage = () => {
               </FormControl>
             </Box>
           </Box>
-          <Box display="flex" justifyContent="flex-end" gap={2}>
+          <Box display="flex" justifyContent="space-between" gap={2}>
             <Button
               startIcon={<Icon icon={'mingcute:arrow-left-line'} />}
               component={Link}
