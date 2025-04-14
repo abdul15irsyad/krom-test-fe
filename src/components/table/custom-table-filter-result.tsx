@@ -31,6 +31,7 @@ export const CustomTableFiltersResult = <F extends { search: string }>({
       <Button
         sx={{
           padding: '.25rem .75rem',
+          fontWeight: 400,
         }}
         color="error"
         onClick={onResetFilters}

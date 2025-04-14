@@ -15,7 +15,7 @@ export const LoadingIllustration = () => (
     <Box sx={{ width: '160px' }}>
       <img
         alt="loading illustration"
-        src={`/assets/illustrations/illustrations_loading.png`}
+        src={`/illustrations/illustrations_loading.png`}
         width={320}
         height={320}
         style={{

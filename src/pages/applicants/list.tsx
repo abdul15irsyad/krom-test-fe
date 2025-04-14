@@ -15,6 +15,7 @@ import { useDebounce } from '../../hooks/use-debounce';
 import { Icon } from '@iconify/react';
 import { ListApplicantToolbar } from './list-toolbar';
 import { ListApplicantTableRow } from './list-row';
+import { Link } from 'react-router-dom';
 
 const tableHead: HeadLabel[] = [
   { id: 'name', label: 'Name' },
@@ -65,11 +66,11 @@ export const ListApplicantPage = () => {
         </Typography>
         <Button
           startIcon={<Icon icon={'mingcute:add-line'} />}
+          component={Link}
+          to={`/add`}
           variant="contained"
-          color="primary"
-          href="/add"
         >
-          Add Applicant
+          Add Applicantion
         </Button>
       </Stack>
       <Card sx={{ padding: 2 }}>

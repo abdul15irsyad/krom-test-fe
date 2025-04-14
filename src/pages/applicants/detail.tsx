@@ -42,12 +42,14 @@ export const DetailApplicationPage = () => {
             </>
             <>
               <Typography>Email</Typography>
-              <Typography
-                component={Link}
-                to={`mailto:${applicantResponse?.data?.email}`}
-              >
-                {applicantResponse?.data?.email}
-              </Typography>
+              <Box>
+                <Typography
+                  component={Link}
+                  to={`mailto:${applicantResponse?.data?.email}`}
+                >
+                  {applicantResponse?.data?.email}
+                </Typography>
+              </Box>
             </>
             <>
               <Typography>Phone Number</Typography>
@@ -67,21 +69,23 @@ export const DetailApplicationPage = () => {
             </>
             <>
               <Typography>Resume</Typography>
-              <Typography
-                fontWeight="bold"
-                component={Link}
-                to={applicantResponse?.data?.resumeURL ?? '#'}
-              >
-                Resume
-              </Typography>
+              <Box>
+                <Typography
+                  fontWeight="bold"
+                  component={Link}
+                  to={applicantResponse?.data?.resumeURL ?? '#'}
+                >
+                  Resume
+                </Typography>
+              </Box>
             </>
             <>
               <Typography>Status</Typography>
               <Box>
                 <PillStatus
                   sx={{
-                    fontSize: '16px',
-                    borderRadius: '.75rem',
+                    fontSize: '14px',
+                    borderRadius: '.5rem',
                     padding: '.3rem .75rem',
                   }}
                   name={applicantResponse?.data?.applicationStatus?.name ?? ''}
@@ -97,6 +101,7 @@ export const DetailApplicationPage = () => {
             startIcon={<Icon icon={'mingcute:arrow-left-line'} />}
             component={Link}
             to={`/`}
+            color="inherit"
             variant="contained"
           >
             Back

@@ -1,8 +1,9 @@
 import { RouterProvider } from 'react-router-dom';
 import './App.css';
-import { Provider } from './components/provider/provider';
 import { router } from './router';
 import { createTheme, ThemeProvider } from '@mui/material';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { SnackbarProvider } from 'notistack';
 
 function App() {
   const theme = createTheme({
@@ -17,27 +18,27 @@ function App() {
       },
     },
     typography: {
-      fontFamily: [
-        '"Plus Jakarta Sans"',
-        '"Inter"',
-        '-apple-system',
-        'BlinkMacSystemFont',
-        '"Segoe UI"',
-        'Roboto',
-        '"Helvetica Neue"',
-        'Arial',
-        'sans-serif',
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-      ].join(','),
+      fontFamily: ['"Plus Jakarta Sans"', 'Roboto'].join(','),
+    },
+  });
+
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: 0,
+      },
     },
   });
   return (
     <ThemeProvider theme={theme}>
-      <Provider>
-        <RouterProvider router={router} />
-      </Provider>
+      <SnackbarProvider
+        maxSnack={3}
+        style={{ fontFamily: ['"Plus Jakarta Sans"', 'Roboto'].join(',') }}
+      >
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+        </QueryClientProvider>
+      </SnackbarProvider>
     </ThemeProvider>
   );
 }

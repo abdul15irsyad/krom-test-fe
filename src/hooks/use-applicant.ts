@@ -1,6 +1,7 @@
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { axiosAPI, endpoints } from '../utils/axios-api';
 import { isEmpty } from 'lodash';
+import { AxiosError } from 'axios';
 
 export const useApplicants = ({ page, limit, search, appliedRoleId, statusId }: {
   page?: number;
@@ -55,7 +56,27 @@ export const useApplicant = (id: string) => {
 };
 
 export const useCreateApplicant = () => {
-  const mutation = useMutation({
+  const mutation = useMutation<{
+    message: string;
+    data: Applicant
+  }, AxiosError<{
+    message: string;
+    error?: string;
+    errors?: {
+      type: string,
+      msg: string,
+      path: string,
+      location: string,
+    }[];
+  }>,{
+    name: string;
+    email: string;
+    phoneNumber: string;
+    appliedRoleId: string;
+    yearsOfExperience: number;
+    location: string;
+    resumeURL: string;
+  }>({
     mutationKey: ['createApplicant'],
     mutationFn: async (data) => {
       const response = await axiosAPI.post(endpoints.applicants.root, data);
