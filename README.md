@@ -11,7 +11,7 @@ Irsyad Abdul Hamid Darussalam
 1. install dependencies
 
    ```bash
-   npm install
+   npm ci
    ```
 
 2. copy `.env.example` to `.env`
@@ -35,5 +35,7 @@ Irsyad Abdul Hamid Darussalam
 2. run container (change VITE_API_URL if the backend port not the default 6001)
 
    ```bash
-   docker run -p 6002:80 --name krom-test-fe -e VITE_API_URL=http://localhost:6001 -d krom-test-fe
+   docker run -p 4173:80 --name krom-test-fe -e VITE_API_URL=http://localhost:6001 -d krom-test-fe
    ```
+
+3. open app in the <http://localhost:4173>
